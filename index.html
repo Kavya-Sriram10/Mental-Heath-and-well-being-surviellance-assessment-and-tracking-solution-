@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Monitoring</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    
+    <style>
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://source.unsplash.com/1600x900/?mental-health,calm');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        /* Form Styling */
+        .questionnaire .card {
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .questionnaire .card:hover {
+            transform: scale(1.02);
+        }
+
+        .form-control, .form-select {
+            border-radius: 8px;
+        }
+
+        /* Button Styling */
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            padding: 12px;
+            font-size: 18px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Result Section */
+        #result-container {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+
+    <header class="hero">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Mental Health Matters</h1>
+            <p class="lead">"Your mental health is just as important as your physical health."</p>
+        </div>
+    </header>
+
+    <section class="questionnaire container my-5">
+        <div class="card shadow">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4 text-primary fw-bold">Mental Health Questionnaire</h2>
+                <form method="POST">
+                    
+                    <div class="mb-3">
+                        <label for="name" class="form-label fw-semibold">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="age" class="form-label fw-semibold">Age:</label>
+                        <input type="number" class="form-control" id="age" name="age" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="gender" class="form-label fw-semibold">Gender:</label>
+                        <select class="form-select" id="gender" name="gender" required>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="mood" class="form-label fw-semibold">How do you feel today? (1: Worst, 10: Best)</label>
+                        <input type="range" class="form-range" id="mood" name="mood" min="1" max="10" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="sleep_quality" class="form-label fw-semibold">How would you describe your sleep pattern?</label>
+                        <select class="form-select" id="sleep_quality" name="sleep_quality" required>
+                            <option value="irregular">Irregular</option>
+                            <option value="adequate">Adequate</option>
+                            <option value="restful">Restful</option>
+                            <option value="disturbed">Disturbed</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="hobbies" class="form-label fw-semibold">Have you lost interest in hobbies or activities you usually enjoy?</label>
+                        <select class="form-select" id="hobbies" name="hobbies" required>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="social" class="form-label fw-semibold">Do you feel connected to your social circle?</label>
+                        <select class="form-select" id="social" name="social" required>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="focus" class="form-label fw-semibold">Have you been experiencing difficulty focusing or concentrating?</label>
+                        <select class="form-select" id="focus" name="focus" required>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exercise" class="form-label fw-semibold">Do you engage in regular physical activity?</label>
+                        <select class="form-select" id="exercise" name="exercise" required>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="self_esteem" class="form-label fw-semibold">How would you rate your self-esteem?</label>
+                        <select class="form-select" id="self_esteem" name="self_esteem" required>
+                            <option value="low">Low</option>
+                            <option value="moderate">Moderate</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="stress_level" class="form-label fw-semibold">How stressed do you feel on a daily basis?</label>
+                        <select class="form-select" id="stress_level" name="stress_level" required>
+                            <option value="low">Low</option>
+                            <option value="moderate">Moderate</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="social_support" class="form-label fw-semibold">Do you feel you have a strong support system in your life?</label>
+                        <select class="form-select" id="social_support" name="social_support" required>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="recent_changes" class="form-label fw-semibold">Have you experienced any major life changes recently?</label>
+                        <select class="form-select" id="recent_changes" name="recent_changes" required>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">Analyze</button>
+                    </div>
+                </form>
+
+                {% if result %}
+                <div id="result-container" class="mt-4 text-center" style="display: none;">
+                    <h3 class="text-primary fw-bold">Hi, {{ name }} ({{ age }} - {{ gender }})</h3>
+                    <h3>Your Mental Health Classification: <strong class="text-danger">{{ result }}</strong></h3>
+                </div>
+
+                <script>
+                    setTimeout(function () {
+                        document.getElementById("result-container").style.display = "block";
+                    }, 2000); // Faster reveal in 2 seconds
+                </script>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>

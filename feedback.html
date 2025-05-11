@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Feedback</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <div class="d-flex justify-content-end mb-3">
+            <a href="/" class="btn btn-secondary">Back to Home</a>
+        </div>
+
+        <h2 class="text-center mb-4">We Value Your Feedback</h2>
+
+        <div class="card p-4 shadow">
+            <form id="feedbackForm">
+                <div class="mb-3">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name" id="name" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Rating</label>
+                    <select class="form-select" name="rating" required>
+                        <option value="">Select Rating</option>
+                        <option value="1">1 - Poor</option>
+                        <option value="2">2 - Fair</option>
+                        <option value="3">3 - Good</option>
+                        <option value="4">4 - Very Good</option>
+                        <option value="5">5 - Excellent</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Comments</label>
+                    <textarea class="form-control" name="comments" rows="3" required></textarea>
+                </div>
+
+                <!-- Hidden fields to pass the extra data -->
+                <input type="hidden" name="result" id="result">
+                <input type="hidden" name="age" id="age">
+                <input type="hidden" name="gender" id="gender">
+                <input type="hidden" name="confidence" id="confidence">
+
+                <button type="submit" class="btn btn-primary w-100">Submit Feedback</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap Modal for Success/Error Message -->
+    <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="feedbackModalLabel">Feedback Status</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalMessage">
+                    <!-- Message will be inserted here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Parse query string params and prefill the form
+        function getQueryParams() {
+            const params = {};
+            const queryString = window.location.search.substring(1);
+            const vars = queryString.split("&");
+            vars.forEach(function(param) {
+                const pair = param.split("=");
+                params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || "");
+            });
+            return params;
+        }
+
+        const queryParams = getQueryParams();
+
+        // Prefill the inputs if they exist in the URL
+        document.getElementById("name").value = queryParams.name || "";
+        document.getElementById("result").value = queryParams.result || "";
+        document.getElementById("age").value = queryParams.age || "";
+        document.getElementById("gender").value = queryParams.gender || "";
+        document.getElementById("confidence").value = queryParams.confidence || "";
+
+        // Handle form submission
+        document.getElementById("feedbackForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(this);
+            const feedbackData = {};
+            formData.forEach((value, key) => feedbackData[key] = value);
+
+            const response = await fetch("/feedback", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(feedbackData)
+            });
+
+            const result = await response.json();
+
+            const modalMessage = document.getElementById("modalMessage");
+            const modalTitle = document.getElementById("feedbackModalLabel");
+
+            if (result.success) {
+                modalTitle.textContent = "Success!";
+                modalMessage.innerHTML = `<p class="text-success">${result.message}</p>`;
+                this.reset();
+            } else {
+                modalTitle.textContent = "Error!";
+                modalMessage.innerHTML = `<p class="text-danger">${result.message}</p>`;
+            }
+
+            const feedbackModal = new bootstrap.Modal(document.getElementById('feedbackModal'));
+            feedbackModal.show();
+        });
+    </script>
+
+</body>
+</html>

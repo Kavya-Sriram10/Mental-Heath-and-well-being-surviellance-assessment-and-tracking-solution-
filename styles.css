@@ -1,0 +1,380 @@
+/* About Us Button (Red Rectangle) */
+.about-us-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background-color: #e74c3c; /* Red color */
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.about-us-button:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f4f8; /* Light background for the whole site */
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(to right, #2980b9, #8e44ad); /* Gradient for hero */
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.tagline {
+  font-size: 18px;
+  font-style: italic;
+  color: #ddd;
+}
+
+/* Offerings Section */
+.offerings {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.offerings h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+/* Offerings Container */
+.offerings-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Each Offering Block */
+.offering {
+  background: #f7f7f7; /* Default light grey background */
+  padding: 20px;
+  border-radius: 15px;
+  width: 220px;
+  margin: 0;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid transparent; /* Ensures no gap when highlighted */
+}
+
+/* Hover effect for offering blocks */
+.offering:hover {
+  background: #f77f00; /* Warm orange background when hovered */
+  border-color: #f77f00; /* Match border color with hover background */
+  transform: scale(1.05); /* Slight zoom-in effect */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Deeper shadow for hover */
+  color: white; /* Change text color to white for better contrast */
+}
+
+/* Title and description colors on hover */
+.offering h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #2980b9; /* Calm blue for normal state */
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.offering:hover h3 {
+  color: white; /* Change title to white when hovered */
+}
+
+.offering p {
+  font-size: 16px;
+  color: #7f8c8d; /* Soft grey for description */
+  margin-bottom: 0;
+  transition: color 0.3s ease;
+}
+
+.offering:hover p {
+  color: #fdfdfd; /* Subtle light color for description */
+}
+
+/* Hover effect for the icon */
+.offering img {
+  width: 60px; 
+  height: 60px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transitions for hover */
+}
+
+.offering:hover img {
+  transform: scale(1.1); /* Slight zoom on the icon */
+  filter: brightness(1.2); /* Brighten the icon on hover */
+}
+
+/* Questionnaire Section */
+.questionnaire {
+  padding: 40px 20px;
+  text-align: center;
+  background: linear-gradient(145deg, #eaf6ff, #dbeeff); /* Light blue gradient for a calm effect */
+  border-radius: 10px;
+  margin: 40px auto;
+  max-width: 800px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.questionnaire-title {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #2980b9; /* Same blue as other titles for consistency */
+}
+
+.questionnaire-description {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #34495e; /* Darker shade for better readability */
+}
+
+/* Form Styling */
+.form-container {
+  margin: 0 auto;
+  text-align: left;
+}
+
+.questionnaire label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #2c3e50; /* Dark blue-grey for contrast */
+}
+
+.questionnaire input,
+.questionnaire select,
+.questionnaire textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.questionnaire button {
+  padding: 12px 20px;
+  background-color: #27ae60;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.questionnaire button:hover {
+  background-color: #2ecc71;
+}
+/* Offerings Section */
+.offerings {
+  padding: 40px 20px;
+  text-align: center;
+  background: linear-gradient(145deg, #f1e6ff, #d9c6ff); /* Soft light purple gradient to complement the purple title */
+  border-radius: 10px; /* Slight rounding to match overall theme */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin: 40px auto; /* Centralize with spacing */
+}
+
+.offerings h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #2980b9; /* Same blue for consistency with titles */
+}
+
+/* Offerings Container */
+.offerings-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Each Offering Block */
+.offering {
+  background: #f7f7f7; /* Default light grey background */
+  padding: 20px;
+  border-radius: 15px;
+  width: 220px;
+  margin: 0;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid transparent; /* Ensures no gap when highlighted */
+}
+
+/* Hover effect for offering blocks */
+.offering:hover {
+  background: #f77f00; /* Warm orange background when hovered */
+  border-color: #f77f00; /* Match border color with hover background */
+  transform: scale(1.05); /* Slight zoom-in effect */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Deeper shadow for hover */
+  color: white; /* Change text color to white for better contrast */
+}
+
+/* Title and description colors on hover */
+.offering h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #2980b9; /* Calm blue for normal state */
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.offering:hover h3 {
+  color: white; /* Change title to white when hovered */
+}
+
+.offering p {
+  font-size: 16px;
+  color: #7f8c8d; /* Soft grey for description */
+  margin-bottom: 0;
+  transition: color 0.3s ease;
+}
+
+.offering:hover p {
+  color: #fdfdfd; /* Subtle light color for description */
+}
+
+/* Hover effect for the icon */
+.offering img {
+  width: 60px; 
+  height: 60px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transitions for hover */
+}
+
+.offering:hover img {
+  transform: scale(1.1); /* Slight zoom on the icon */
+  filter: brightness(1.2); /* Brighten the icon on hover */
+}
+/* Adjust the background color of the section above "What We Offer" */
+.questionnaire {
+  padding: 40px 20px;
+  text-align: center;
+  background: linear-gradient(145deg, #eaf6ff, #dbeeff); /* Light blue gradient for a calm effect */
+  border-radius: 10px;
+  margin: 40px auto;
+  max-width: 800px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Offerings Section (What We Offer) */
+.offerings {
+  padding: 40px 20px;
+  text-align: center;
+  background: linear-gradient(145deg, #f1e6ff, #d9c6ff); /* Soft light purple gradient */
+  border-radius: 10px; /* Slight rounding to match overall theme */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin: -20px auto 40px auto; /* Slightly overlap to remove the gap */
+}
+
+.offerings h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #2980b9; /* Same blue for consistency with titles */
+}
+
+/* Offerings Container */
+.offerings-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Each Offering Block */
+.offering {
+  background: #f7f7f7; /* Default light grey background */
+  padding: 20px;
+  border-radius: 15px;
+  width: 220px;
+  margin: 0;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid transparent; /* Ensures no gap when highlighted */
+}
+
+/* Hover effect for offering blocks dd7607*/
+.offering:hover {
+  background: #ee6a18; /* Change to a new blue color for hover purple- c34efa */
+  border-color: #ee6a18; /* Match border color with hover background */
+  transform: scale(1.05); /* Slight zoom-in effect */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Deeper shadow for hover */
+  color:black; /* Change text color to white for better contrast */
+}
+
+
+/* Title and description colors on hover */
+.offering h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #2980b9; /* Calm blue for normal state */
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.offering:hover h3 {
+  color: black; /* Change title to white when hovered */
+}
+
+.offering p {
+  font-size: 16px;
+  color: #7f8c8d; /* Soft grey for description */
+  margin-bottom: 0;
+  transition: color 0.3s ease;
+}
+
+.offering:hover p {
+  color: #fdfdfd; /* Subtle light color for description */
+}
+
+/* Hover effect for the icon */
+.offering img {
+  width: 60px; 
+  height: 60px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transitions for hover */
+}
+
+.offering:hover img {
+  transform: scale(1.1); /* Slight zoom on the icon */
+  filter: brightness(1.2); /* Brighten the icon on hover */
+}
+/* Hover effect for offering blocks */
+.offering:hover {
+  background: #ffbc80; /* Soft peach/light tangerine color for hover */
+  border-color: #ffbc80; /* Match border color with hover background */
+  transform: scale(1.05); /* Slight zoom-in effect */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Deeper shadow for hover */
+  color: white; /* Change text color to white for better contrast */
+}
